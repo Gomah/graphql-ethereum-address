@@ -4,17 +4,20 @@ import { GraphQLEthereumAddress } from '../src';
 describe('EthereumAddress', () => {
   describe('valid', () => {
     test('serialize', () => {
-      expect(GraphQLEthereumAddress.serialize('0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379')).toBe(
-        '0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379',
-      );
+      expect(
+        GraphQLEthereumAddress.serialize(
+          '0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379'
+        )
+      ).toBe('0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379');
     });
 
     test('parseValue', () => {
-      expect(GraphQLEthereumAddress.parseValue('0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379')).toBe(
-        '0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379',
-      );
+      expect(
+        GraphQLEthereumAddress.parseValue(
+          '0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379'
+        )
+      ).toBe('0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379');
     });
-
 
     test('parseLiteral', () => {
       expect(
@@ -23,8 +26,8 @@ describe('EthereumAddress', () => {
             value: '0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379',
             kind: Kind.STRING,
           },
-          {},
-        ),
+          {}
+        )
       ).toBe('0x561b5F3745a1a9e44Ac16010bd670eeAE0cA3379');
     });
   });
@@ -33,13 +36,13 @@ describe('EthereumAddress', () => {
     describe('not an ethereum address', () => {
       test('serialize', () => {
         expect(() =>
-          GraphQLEthereumAddress.serialize('this is not an ethereum address'),
+          GraphQLEthereumAddress.serialize('this is not an ethereum address')
         ).toThrow(/Value is not a valid ethereum address/);
       });
 
       test('parseValue', () => {
         expect(() =>
-          GraphQLEthereumAddress.parseValue('this is not an ethereum address'),
+          GraphQLEthereumAddress.parseValue('this is not an ethereum address')
         ).toThrow(/Value is not a valid ethereum address/);
       });
 
@@ -50,8 +53,8 @@ describe('EthereumAddress', () => {
               value: 'this is not an ethereum address',
               kind: Kind.STRING,
             },
-            {},
-          ),
+            {}
+          )
         ).toThrow(/Value is not a valid ethereum address/);
       });
     });
@@ -59,13 +62,13 @@ describe('EthereumAddress', () => {
     describe('not a string', () => {
       test('serialize', () => {
         expect(() => GraphQLEthereumAddress.serialize(1337)).toThrow(
-          /Value is not string/,
+          /Value is not string/
         );
       });
 
       test('parseValue', () => {
         expect(() => GraphQLEthereumAddress.parseValue(1337)).toThrow(
-          /Value is not string/,
+          /Value is not string/
         );
       });
 
@@ -73,8 +76,8 @@ describe('EthereumAddress', () => {
         expect(() =>
           GraphQLEthereumAddress.parseLiteral(
             { value: '1337', kind: Kind.INT },
-            {},
-          ),
+            {}
+          )
         ).toThrow(/Can only validate strings as ethereum addresses but got a/);
       });
     });
