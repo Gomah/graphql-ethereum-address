@@ -51,8 +51,7 @@ export const GraphQLEthereumAddressConfig = /*#__PURE__*/ {
   },
 } as GraphQLScalarTypeConfig<string, string>;
 
-export const GraphQLEthereumAddress: GraphQLScalarType = /*#__PURE__*/ new GraphQLScalarType(
-  GraphQLEthereumAddressConfig
-);
+export const GraphQLEthereumAddress: GraphQLScalarType =
+  /*#__PURE__*/ new GraphQLScalarType(GraphQLEthereumAddressConfig);
 
 export { GraphQLEthereumAddress as EthereumAddressResolver };
